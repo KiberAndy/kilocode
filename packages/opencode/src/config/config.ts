@@ -1468,9 +1468,10 @@ export namespace Config {
           disable_paste_summary: z.boolean().optional(),
           batch_tool: z.boolean().optional().describe("Enable the batch tool"),
           codebase_search: z.boolean().optional().describe("Enable AI-powered codebase search"), // kilocode_change
-          // kilocode_change start - enable telemetry by default
-          openTelemetry: z.boolean().default(true).describe("Enable telemetry. Set to false to opt-out."),
+          // kilocode_change start - disable telemetry by default for privacy
+          openTelemetry: z.boolean().default(false).describe("Enable telemetry. Set to false to opt-out."),
           // kilocode_change end
+          disable_system_info: z.boolean().optional().describe("Disable system hardware info in AI context"),
           primary_tools: z
             .array(z.string())
             .optional()
