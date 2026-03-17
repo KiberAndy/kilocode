@@ -33,6 +33,7 @@ a.out
 target
 .scripts
 .direnv/
+QWEN.md
 
 # Local dev files
 opencode-dev
