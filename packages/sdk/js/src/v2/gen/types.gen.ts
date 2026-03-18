@@ -1542,6 +1542,10 @@ export type Config = {
      */
     openTelemetry?: boolean
     /**
+     * Disable system hardware info in AI context
+     */
+    disable_system_info?: boolean
+    /**
      * Tools that should only be available to primary agents.
      */
     primary_tools?: Array<string>

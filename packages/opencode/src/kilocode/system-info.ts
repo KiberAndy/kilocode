@@ -46,36 +46,38 @@ export namespace SystemInfo {
     // CPU
     try {
       const { stdout } = await execAsync(
-        "wmic cpu get name /format:csv",
+        "wmic cpu get name /value",
         { encoding: "utf8", timeout: 5000 }
       )
-      const lines = stdout.trim().split("\n").filter(l => l.trim())
-      if (lines.length > 1) {
-        info.cpu = lines[lines.length - 1].trim()
-      }
+      const match = stdout.match(/Name=(.+)/)
+      if (match) info.cpu = match[1].trim()
     } catch {}
 
     // GPU
     try {
       const { stdout } = await execAsync(
-        "wmic path win32_videocontroller get name /format:csv",
+        "wmic path win32_videocontroller get name /value",
         { encoding: "utf8", timeout: 5000 }
       )
-      const lines = stdout.trim().split("\n").filter(l => l.trim())
-      info.gpu = lines.slice(1).map(l => l.trim()).filter(Boolean)
+      const matches = [...stdout.matchAll(/Name=(.+)/g)]
+      if (matches.length > 0) {
+        info.gpu = matches.map(m => m[1].trim()).filter(Boolean)
+      }
     } catch {}
 
     // RAM
     try {
       const { stdout } = await execAsync(
-        "wmic OS get TotalVisibleMemorySize /format:csv",
+        "wmic OS get TotalVisibleMemorySize /value",
         { encoding: "utf8", timeout: 5000 }
       )
-      const lines = stdout.trim().split("\n").filter(l => l.trim())
-      if (lines.length > 1) {
-        const ramKB = parseInt(lines[lines.length - 1].trim(), 10)
-        const ramGB = Math.round(ramKB / 1024 / 1024)
-        info.ram = `${ramGB} GB`
+      const match = stdout.match(/TotalVisibleMemorySize=(\d+)/)
+      if (match) {
+        const ramKB = parseInt(match[1], 10)
+        if (!isNaN(ramKB) && ramKB > 0) {
+          const ramGB = Math.round(ramKB / 1024 / 1024)
+          info.ram = `${ramGB} GB`
+        }
       }
     } catch {}
   }

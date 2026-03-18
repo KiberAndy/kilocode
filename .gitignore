@@ -34,6 +34,7 @@ target
 .scripts
 .direnv/
 QWEN.md
+build-fork.ps1
 
 # Local dev files
 opencode-dev
