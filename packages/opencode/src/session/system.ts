@@ -3,18 +3,13 @@ import { Ripgrep } from "../file/ripgrep"
 import { Global } from "../global" // kilocode_change
 import { Instance } from "../project/instance"
 
-import PROMPT_ANTHROPIC from "./prompt/anthropic.txt"
-import PROMPT_ANTHROPIC_WITHOUT_TODO from "./prompt/qwen.txt"
-import PROMPT_BEAST from "./prompt/beast.txt"
-import PROMPT_GEMINI from "./prompt/gemini.txt"
-
 import PROMPT_CODEX from "./prompt/codex_header.txt"
-import PROMPT_TRINITY from "./prompt/trinity.txt"
 import PROMPT_KILO_CUSTOM from "./prompt/kilo-custom.txt" // kilocode_change - custom prompt
 import type { Provider } from "@/provider/provider"
 import { Config } from "@/config/config" // kilocode_change - for system info disable flag
 
 // kilocode_change start
+import SOUL from "../kilocode/soul.txt"
 import { staticEnvLines, type EditorContext } from "../kilocode/editor-context"
 import { SystemInfo } from "../kilocode/system-info"
 // kilocode_change end

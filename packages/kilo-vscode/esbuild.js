@@ -154,6 +154,7 @@ function createBrowserWebviewContext(entryPoint, outfile) {
       ".woff": "file",
       ".woff2": "file",
       ".ttf": "file",
+	  ".txt": "text",
     },
     plugins: [
       solidDedupePlugin,
