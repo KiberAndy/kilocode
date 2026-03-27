@@ -36,6 +36,8 @@ target
 QWEN.md
 build-fork.ps1
 update-fork.ps1
+continue-update.ps1
+my-patches/
 
 # Local dev files
 opencode-dev
