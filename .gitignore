@@ -36,7 +36,10 @@ target
 QWEN.md
 build-fork.ps1
 update-fork.ps1
+<<<<<<< Updated upstream
 continue-update.ps1
+=======
+>>>>>>> Stashed changes
 my-patches/
 
 # Local dev files
